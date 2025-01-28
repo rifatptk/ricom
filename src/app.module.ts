@@ -3,11 +3,12 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
-import { UserModule } from './user/user.module';
 import { UsersModule } from './users/users.module';
 import { RolesModule } from './roles/roles.module';
-import { VendorModule } from './vendor/vendor.module';
 import { VendorsModule } from './vendors/vendors.module';
+import { Vendor } from './vendors/vendor.entity';
+import { User } from './users/user.entity';
+import { Role } from './roles/role.entity';
 
 @Module({
   imports: [
@@ -18,15 +19,12 @@ import { VendorsModule } from './vendors/vendors.module';
       username: 'postgres',
       password: 'root',
       database: 'ricom',
-      entities: [],
-      autoLoadEntities: true,
+      entities: [User, Vendor, Role],
       synchronize: true,
     }),
     AuthModule,
-    UserModule,
     UsersModule,
     RolesModule,
-    VendorModule,
     VendorsModule,
   ],
   controllers: [AppController],

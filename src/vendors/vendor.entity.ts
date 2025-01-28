@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { User } from '../users/user.entity'; // Vendor's user admin reference
+import { User } from '../users/user.entity';
 
 @Entity()
 export class Vendor {
@@ -7,26 +7,26 @@ export class Vendor {
   id: number;
 
   @Column()
-  name: string; // Name of the vendor/store
+  name: string;
 
   @Column({ nullable: true })
-  description: string; // Short description of the store
+  description: string;
 
   @Column({ nullable: true })
-  email: string; // Contact email for the vendor/store
+  email: string;
 
   @Column({ nullable: true })
-  phone: string; // Contact phone number for the vendor/store
+  phone: string;
 
   @Column({ default: true })
-  is_active: boolean; // Status of the vendor (active or inactive)
+  is_active: boolean;
 
   @Column({ nullable: true })
-  logo_url: string; // URL for the store's logo (branding)
+  logo_url: string;
 
   @Column({ nullable: true })
-  website_url: string; // Link to the vendor's website (optional)
+  website_url: string;
 
-  @OneToMany(() => User, (user) => user.vendor) // Vendor Staff, Managers, Admins
+  @OneToMany(() => User, (user) => user.vendor)
   staffs: User[];
 }
