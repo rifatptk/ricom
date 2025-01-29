@@ -6,6 +6,7 @@ import {
   PrimaryGeneratedColumn,
   ManyToMany,
   ManyToOne,
+  JoinTable,
 } from 'typeorm';
 
 @Entity()
@@ -32,6 +33,7 @@ export class User {
   is_active: boolean;
 
   @ManyToMany(() => Role, (role) => role.users)
+  @JoinTable({ name: 'user_roles' })
   roles: Role[];
 
   @ManyToOne(() => Vendor, (vendor) => vendor.staffs, { nullable: true })
