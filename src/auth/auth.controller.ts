@@ -10,10 +10,10 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { LoginDto } from './dtos/login.dto';
+import { LoginDto } from './dto/login.dto';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthedRequest } from 'src/types/auth.type';
-import { RegisterDto } from './dtos/register.dto';
+import { SignupDto } from './dto/signup.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -21,8 +21,8 @@ export class AuthController {
 
   @HttpCode(HttpStatus.CREATED)
   @Post('register')
-  register(@Body() payload: RegisterDto) {
-    throw new NotImplementedException();
+  register(@Body() dto: SignupDto) {
+    return this.authService.register(dto);
   }
 
   @HttpCode(HttpStatus.OK)

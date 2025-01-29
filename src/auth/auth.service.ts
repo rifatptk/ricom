@@ -3,7 +3,7 @@ import {
   NotImplementedException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { LoginDto } from './dtos/login.dto';
+import { LoginDto } from './dto/login.dto';
 import { UsersService } from 'src/users/users.service';
 import { User } from 'src/users/user.entity';
 import {
@@ -12,7 +12,8 @@ import {
   UserResponse,
 } from 'src/types/auth.type';
 import { JwtService } from '@nestjs/jwt';
-import { RegisterDto } from './dtos/register.dto';
+import { SignupDto } from './dto/signup.dto';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class AuthService {
@@ -20,6 +21,11 @@ export class AuthService {
     private usersService: UsersService,
     private jwtService: JwtService,
   ) {}
+
+  async register(dto: SignupDto): Promise<LoginResponse> {
+    const user = await this.usersService.create(dto);
+    return this.signIn(user);
+  }
 
   async authenticate(credentials: LoginDto): Promise<LoginResponse> {
     const user = await this.validateUser(credentials);
@@ -31,9 +37,11 @@ export class AuthService {
 
   async validateUser(credentials: LoginDto): Promise<User | null> {
     const user = await this.usersService.findOneByPhone(credentials.phone);
-    if (user && user.password === credentials.password) {
+
+    if (user && (await bcrypt.compare(credentials.password, user.password))) {
       return user;
     }
+
     return null;
   }
 
