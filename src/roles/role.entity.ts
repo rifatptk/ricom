@@ -2,13 +2,13 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from 'typeorm';
 import { User } from '../users/user.entity';
 
 export enum RoleName {
-  SUPER_ADMIN = 'super-admin',
-  MANAGER = 'manager',
-  STAFF = 'staff',
-  VENDOR_ADMIN = 'vendor-admin',
-  VENDOR_MANAGER = 'vendor-manager',
-  VENDOR_STAFF = 'vendor-staff',
-  CUSTOMER = 'customer',
+  SUPER_ADMIN = 'SUPER_ADMIN',
+  MANAGER = 'MANAGER',
+  STAFF = 'STAFF',
+  VENDOR_ADMIN = 'VENDOR_ADMIN',
+  VENDOR_MANAGER = 'VENDOR_MANAGER',
+  VENDOR_STAFF = 'VENDOR_STAFF',
+  CUSTOMER = 'CUSTOMER',
 }
 
 @Entity()
@@ -16,7 +16,7 @@ export class Role {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ unique: true })
   name: RoleName;
 
   @Column({ nullable: true })
