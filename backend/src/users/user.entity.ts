@@ -7,6 +7,8 @@ import {
   ManyToMany,
   ManyToOne,
   JoinTable,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity()
@@ -38,4 +40,10 @@ export class User {
 
   @ManyToOne(() => Vendor, (vendor) => vendor.staffs, { nullable: true })
   vendor: Vendor;
+
+  @CreateDateColumn({ type: 'timestamptz' })
+  created_at: Date;
+
+  @UpdateDateColumn({ type: 'timestamptz' })
+  updated_at: Date;
 }
