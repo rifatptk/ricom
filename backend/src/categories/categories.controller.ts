@@ -13,10 +13,7 @@ import {
 import { CategoriesService } from './categories.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
-import {
-  PaginationDto,
-  PaginationQueryDto,
-} from 'src/shared/dto/pagination.dto';
+import { PaginationQueryDto } from 'src/shared/dto/pagination.dto';
 
 @Controller('categories')
 export class CategoriesController {

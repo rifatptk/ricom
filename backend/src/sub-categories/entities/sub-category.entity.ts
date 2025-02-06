@@ -20,6 +20,9 @@ export class SubCategory {
   @Column({ nullable: true })
   description: string;
 
+  @Column({ nullable: false })
+  category_id: number;
+
   @ManyToOne(() => Category, (category) => category.sub_categories, {
     onDelete: 'CASCADE',
     nullable: false,

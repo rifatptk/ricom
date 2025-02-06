@@ -1,7 +1,19 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Query,
+  HttpCode,
+  HttpStatus,
+} from '@nestjs/common';
 import { SubCategoriesService } from './sub-categories.service';
 import { CreateSubCategoryDto } from './dto/create-sub-category.dto';
 import { UpdateSubCategoryDto } from './dto/update-sub-category.dto';
+import { PaginationQueryDto } from 'src/shared/dto/pagination.dto';
 
 @Controller('sub-categories')
 export class SubCategoriesController {
@@ -13,8 +25,23 @@ export class SubCategoriesController {
   }
 
   @Get()
-  findAll() {
-    return this.subCategoriesService.findAll();
+  async findAll(@Query() paginationQuery: PaginationQueryDto) {
+    const skip = (paginationQuery.page - 1) * paginationQuery.limit;
+
+    const { data, total } = await this.subCategoriesService.findAll({
+      skip,
+      limit: paginationQuery.limit,
+    });
+
+    return {
+      message: 'Sub-categories fetched successfully',
+      data,
+      meta: {
+        total,
+        page: paginationQuery.page,
+        last_page: Math.ceil(total / paginationQuery.limit),
+      },
+    };
   }
 
   @Get(':id')
@@ -23,11 +50,15 @@ export class SubCategoriesController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateSubCategoryDto: UpdateSubCategoryDto) {
-    return this.subCategoriesService.update(+id, updateSubCategoryDto);
+  update(
+    @Param('id') id: string,
+    @Body() updateCategoryDto: UpdateSubCategoryDto,
+  ) {
+    return this.subCategoriesService.update(+id, updateCategoryDto);
   }
 
   @Delete(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
   remove(@Param('id') id: string) {
     return this.subCategoriesService.remove(+id);
   }
