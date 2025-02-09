@@ -33,11 +33,15 @@ export class SubCategoriesService {
     };
   }
 
-  findOne(id: number) {
-    return this.subcategoryRepository.findOne({
+  async findOne(id: number) {
+    const subCategory = await this.subcategoryRepository.findOne({
       where: { id },
       relations: ['category'],
     });
+
+    if (!subCategory) throw new NotFoundException();
+
+    return subCategory;
   }
 
   async update(id: number, updateSubcategoryDto: UpdateSubCategoryDto) {

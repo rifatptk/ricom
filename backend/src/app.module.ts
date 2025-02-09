@@ -6,7 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { RolesModule } from './roles/roles.module';
 import { VendorsModule } from './vendors/vendors.module';
-import { Vendor } from './vendors/vendor.entity';
+import { Vendor } from './vendors/entities/vendor.entity';
 import { User } from './users/user.entity';
 import { Role } from './roles/role.entity';
 import { CategoriesModule } from './categories/categories.module';

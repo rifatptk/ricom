@@ -1,5 +1,5 @@
 import { Role } from 'src/roles/role.entity';
-import { Vendor } from 'src/vendors/vendor.entity';
+import { Vendor } from 'src/vendors/entities/vendor.entity';
 import {
   Entity,
   Column,
