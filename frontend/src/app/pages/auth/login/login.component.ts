@@ -1,19 +1,9 @@
 import { Component, inject } from '@angular/core';
-import { InputMaskModule } from 'primeng/inputmask';
-import { CardModule } from 'primeng/card';
-import { PasswordModule } from 'primeng/password';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-login',
-  imports: [
-    ReactiveFormsModule,
-    CardModule,
-    InputMaskModule,
-    PasswordModule,
-    ButtonModule,
-  ],
+  imports: [ReactiveFormsModule],
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
