@@ -1,11 +1,9 @@
-import { Role } from 'src/roles/role.entity';
-import { Vendor } from 'src/vendors/entities/vendor.entity';
+import { Role } from 'src/roles/entitites/role.entity';
 import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
   ManyToMany,
-  ManyToOne,
   JoinTable,
   CreateDateColumn,
   UpdateDateColumn,
@@ -25,11 +23,11 @@ export class User {
   @Column({ unique: true })
   phone: string;
 
-  @Column({ unique: true })
-  email: string;
-
   @Column()
   password: string;
+
+  @Column({ nullable: true })
+  avatar: string;
 
   @Column({ default: true })
   is_active: boolean;
@@ -37,9 +35,6 @@ export class User {
   @ManyToMany(() => Role, (role) => role.users)
   @JoinTable({ name: 'user_roles' })
   roles: Role[];
-
-  @ManyToOne(() => Vendor, (vendor) => vendor.staffs, { nullable: true })
-  vendor: Vendor;
 
   @CreateDateColumn({ type: 'timestamptz' })
   created_at: Date;

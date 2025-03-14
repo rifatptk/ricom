@@ -4,7 +4,7 @@ import { User } from './user.entity';
 import { Repository } from 'typeorm';
 import { SignupDto } from 'src/auth/dto/signup.dto';
 import * as bcrypt from 'bcrypt';
-import { Role, RoleName } from 'src/roles/role.entity';
+import { Role, RoleName } from 'src/roles/entitites/role.entity';
 
 @Injectable()
 export class UsersService {

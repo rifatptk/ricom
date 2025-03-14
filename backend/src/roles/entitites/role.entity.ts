@@ -6,15 +6,15 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { User } from '../users/user.entity';
+import { User } from '../../users/user.entity';
 
 export enum RoleName {
   SUPER_ADMIN = 'SUPER_ADMIN',
   MANAGER = 'MANAGER',
   STAFF = 'STAFF',
-  VENDOR_ADMIN = 'VENDOR_ADMIN',
-  VENDOR_MANAGER = 'VENDOR_MANAGER',
-  VENDOR_STAFF = 'VENDOR_STAFF',
+  ORG_ADMIN = 'ORG_ADMIN',
+  ORG_MANAGER = 'ORG_MANAGER',
+  ORG_STAFF = 'ORG_STAFF',
   CUSTOMER = 'CUSTOMER',
 }
 
