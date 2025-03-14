@@ -11,6 +11,12 @@ import { CategoriesModule } from './categories/categories.module';
 import { SubCategoriesModule } from './sub-categories/sub-categories.module';
 import { Category } from './categories/entities/category.entity';
 import { SubCategory } from './sub-categories/entities/sub-category.entity';
+import { OrganizationsModule } from './organizations/organizations.module';
+import { Organization } from './organizations/entities/organization.entity';
+import { ProfilesModule } from './profiles/profiles.module';
+import { Profile } from './profiles/entities/profile.entity';
+import { AddressesModule } from './addresses/addresses.module';
+import { Address } from './addresses/entities/address.entity';
 
 @Module({
   imports: [
@@ -21,7 +27,15 @@ import { SubCategory } from './sub-categories/entities/sub-category.entity';
       username: 'postgres',
       password: 'root',
       database: 'ricom',
-      entities: [User, Role, Category, SubCategory],
+      entities: [
+        User,
+        Profile,
+        Address,
+        Role,
+        Organization,
+        Category,
+        SubCategory,
+      ],
       synchronize: true,
     }),
     AuthModule,
@@ -29,6 +43,9 @@ import { SubCategory } from './sub-categories/entities/sub-category.entity';
     RolesModule,
     CategoriesModule,
     SubCategoriesModule,
+    OrganizationsModule,
+    ProfilesModule,
+    AddressesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

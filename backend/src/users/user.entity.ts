@@ -1,3 +1,4 @@
+import { Profile } from 'src/profiles/entities/profile.entity';
 import { Role } from 'src/roles/entitites/role.entity';
 import {
   Entity,
@@ -7,6 +8,8 @@ import {
   JoinTable,
   CreateDateColumn,
   UpdateDateColumn,
+  JoinColumn,
+  OneToOne,
 } from 'typeorm';
 
 @Entity()
@@ -35,6 +38,10 @@ export class User {
   @ManyToMany(() => Role, (role) => role.users)
   @JoinTable({ name: 'user_roles' })
   roles: Role[];
+
+  @OneToOne(() => Profile, (profile) => profile.user)
+  @JoinColumn()
+  profile: Profile;
 
   @CreateDateColumn({ type: 'timestamptz' })
   created_at: Date;
