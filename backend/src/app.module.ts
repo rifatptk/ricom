@@ -17,6 +17,14 @@ import { ProfilesModule } from './profiles/profiles.module';
 import { Profile } from './profiles/entities/profile.entity';
 import { AddressesModule } from './addresses/addresses.module';
 import { Address } from './addresses/entities/address.entity';
+import { OrganizationUsersModule } from './organization-users/organization-users.module';
+import { UserGroupsModule } from './user-groups/user-groups.module';
+import { PermissionsModule } from './permissions/permissions.module';
+import { ActivitiesModule } from './activities/activities.module';
+import { OrganizationUser } from './organization-users/entities/organization-user.entity';
+import { UserGroup } from './user-groups/entities/user-group.entity';
+import { Permission } from './permissions/entities/permission.entity';
+import { Activity } from './activities/entities/activity.entity';
 
 @Module({
   imports: [
@@ -30,9 +38,13 @@ import { Address } from './addresses/entities/address.entity';
       entities: [
         User,
         Profile,
+        Organization,
+        OrganizationUser,
+        UserGroup,
+        Permission,
+        Activity,
         Address,
         Role,
-        Organization,
         Category,
         SubCategory,
       ],
@@ -46,6 +58,10 @@ import { Address } from './addresses/entities/address.entity';
     OrganizationsModule,
     ProfilesModule,
     AddressesModule,
+    OrganizationUsersModule,
+    UserGroupsModule,
+    PermissionsModule,
+    ActivitiesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

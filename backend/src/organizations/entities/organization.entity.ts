@@ -1,7 +1,10 @@
+import { OrganizationUser } from 'src/organization-users/entities/organization-user.entity';
+import { UserGroup } from 'src/user-groups/entities/user-group.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -35,8 +38,9 @@ export class Organization {
   @UpdateDateColumn({ type: 'timestamptz' })
   updated_at: Date;
 
-  // @Column()
-  // gallery: string[];
+  @OneToMany(() => UserGroup, (userGroup) => userGroup.organization)
+  groups: OrganizationUser[];
 
-  // members: orgusers[]
+  @OneToMany(() => OrganizationUser, (orgUser) => orgUser.user)
+  members: OrganizationUser[];
 }
