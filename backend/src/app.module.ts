@@ -25,7 +25,7 @@ import { OrganizationUser } from './organization-users/entities/organization-use
 import { UserGroup } from './user-groups/entities/user-group.entity';
 import { Permission } from './permissions/entities/permission.entity';
 import { Activity } from './activities/entities/activity.entity';
-import { PassPolicyService } from './pass-policy/pass-policy.service';
+import { PasswordPolicyModule } from './password-policy/password-policy.module';
 
 @Module({
   imports: [
@@ -63,8 +63,9 @@ import { PassPolicyService } from './pass-policy/pass-policy.service';
     UserGroupsModule,
     PermissionsModule,
     ActivitiesModule,
+    PasswordPolicyModule,
   ],
   controllers: [AppController],
-  providers: [AppService, PassPolicyService],
+  providers: [AppService],
 })
 export class AppModule {}

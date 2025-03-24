@@ -1,5 +1,5 @@
 import { OrganizationUser } from 'src/organization-users/entities/organization-user.entity';
-import { PasswordPolicy } from 'src/pass-policy/pass-policy.entity';
+import { PasswordPolicy } from 'src/password-policy/password-policy.entity';
 import { UserGroup } from 'src/user-groups/entities/user-group.entity';
 import {
   Column,
@@ -34,8 +34,12 @@ export class Organization {
   @Column({ unique: true })
   phone: string;
 
-  @OneToOne(() => PasswordPolicy, (passwordPolicy) => passwordPolicy.organization, { cascade: true })
-  passwordPolicy: PasswordPolicy;
+  @OneToOne(
+    () => PasswordPolicy,
+    (passwordPolicy) => passwordPolicy.organization,
+    { cascade: true },
+  )
+  password_policy: PasswordPolicy;
 
   @CreateDateColumn({ type: 'timestamptz' })
   created_at: Date;

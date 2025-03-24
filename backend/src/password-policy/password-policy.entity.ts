@@ -18,12 +18,18 @@ export class PasswordPolicy {
   title: string;
 
   @Column({ default: false })
-  needPasswordReset: boolean;
+  need_password_reset: boolean;
 
   @Column()
   policy: string;
 
-  @OneToOne(() => Organization, (organization) => organization.passwordPolicy, { onDelete: 'CASCADE' })
+  @OneToOne(
+    () => Organization,
+    (organization) => organization.password_policy,
+    {
+      onDelete: 'CASCADE',
+    },
+  )
   @JoinColumn()
   organization: Organization;
 
