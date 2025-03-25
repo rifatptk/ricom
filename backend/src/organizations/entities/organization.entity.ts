@@ -1,10 +1,12 @@
 import { OrganizationUser } from 'src/organization-users/entities/organization-user.entity';
+import { PasswordPolicy } from 'src/password-policy/entities/password-policy.entity';
 import { UserGroup } from 'src/user-groups/entities/user-group.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -31,6 +33,13 @@ export class Organization {
 
   @Column({ unique: true })
   phone: string;
+
+  @OneToOne(
+    () => PasswordPolicy,
+    (passwordPolicy) => passwordPolicy.organization,
+    { cascade: true },
+  )
+  password_policy: PasswordPolicy;
 
   @CreateDateColumn({ type: 'timestamptz' })
   created_at: Date;
