@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { PasswordPolicy } from './password-policy.entity';
+import { PasswordPolicy } from './entities/password-policy.entity';
 import { PasswordPolicyService } from './password-policy.service';
 
 @Module({

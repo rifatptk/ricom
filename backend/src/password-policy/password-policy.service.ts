@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { PasswordPolicy } from './password-policy.entity';
+import { PasswordPolicy } from './entities/password-policy.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()

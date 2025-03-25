@@ -1,5 +1,5 @@
 import { OrganizationUser } from 'src/organization-users/entities/organization-user.entity';
-import { PasswordPolicy } from 'src/password-policy/password-policy.entity';
+import { PasswordPolicy } from 'src/password-policy/entities/password-policy.entity';
 import { UserGroup } from 'src/user-groups/entities/user-group.entity';
 import {
   Column,
