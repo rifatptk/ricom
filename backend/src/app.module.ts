@@ -25,6 +25,8 @@ import { OrganizationUser } from './organization-users/entities/organization-use
 import { UserGroup } from './user-groups/entities/user-group.entity';
 import { Permission } from './permissions/entities/permission.entity';
 import { Activity } from './activities/entities/activity.entity';
+import { PasswordPolicyModule } from './password-policy/password-policy.module';
+import { PasswordPolicy } from './password-policy/entities/password-policy.entity';
 
 @Module({
   imports: [
@@ -47,6 +49,7 @@ import { Activity } from './activities/entities/activity.entity';
         Role,
         Category,
         SubCategory,
+        PasswordPolicy,
       ],
       synchronize: true,
     }),
@@ -62,6 +65,7 @@ import { Activity } from './activities/entities/activity.entity';
     UserGroupsModule,
     PermissionsModule,
     ActivitiesModule,
+    PasswordPolicyModule,
   ],
   controllers: [AppController],
   providers: [AppService],
