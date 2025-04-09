@@ -48,7 +48,7 @@ export class Organization {
   updated_at: Date;
 
   @OneToMany(() => UserGroup, (userGroup) => userGroup.organization)
-  groups: OrganizationUser[];
+  groups: UserGroup[];
 
   @OneToMany(() => OrganizationUser, (orgUser) => orgUser.user)
   members: OrganizationUser[];
