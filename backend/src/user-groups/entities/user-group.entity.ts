@@ -20,6 +20,9 @@ export class UserGroup {
   @Column()
   title: string;
 
+  @Column()
+  description: string;
+
   @ManyToOne(() => Organization, (organization) => organization.groups)
   @JoinColumn()
   organization: Organization;
