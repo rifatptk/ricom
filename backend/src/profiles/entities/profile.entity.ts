@@ -1,4 +1,3 @@
-import { Address } from 'src/addresses/entities/address.entity';
 import { User } from 'src/users/user.entity';
 
 export enum Gender {
@@ -11,7 +10,6 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
